@@ -1,4 +1,10 @@
 package model;
 
-public class Limpiador {
+
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(value = "4")
+public class Limpiador extends Persona{
 }
