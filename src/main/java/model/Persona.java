@@ -11,22 +11,70 @@ import jakarta.validation.constraints.Size;
 public class Persona {
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_persona", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    protected Integer id;
 
     @Column(name = "dni", nullable = false, length = 9)
-    private String dni;
+    protected String dni;
 
     @Column(name = "nss", nullable = false)
-    private String nss;
+    protected String nss;
 
     @Column(name = "nombre", nullable = false)
-    private String nombre;
+    protected String nombre;
 
     @Column(name = "direccion", nullable = false)
-    private String direccion;
+    protected String direccion;
 
     @Column(name = "telefono", nullable = false)
-    private String telefono;
+    protected String telefono;
+
+    public Persona() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getNss() {
+        return nss;
+    }
+
+    public void setNss(String nss) {
+        this.nss = nss;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 }
