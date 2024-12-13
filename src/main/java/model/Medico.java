@@ -6,6 +6,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "medico")
+@PrimaryKeyJoinColumn(name="id")
+@DiscriminatorValue(value="1")
 public class Medico extends Persona{
 
     @Column(name = "consulta", nullable = false)

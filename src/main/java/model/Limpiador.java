@@ -1,13 +1,12 @@
 package model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "limpiador")
+@PrimaryKeyJoinColumn(name="id")
+@DiscriminatorValue(value="4")
 public class Limpiador extends Persona{
     @Column(name = "planta", nullable = false)
     private String planta;

@@ -5,9 +5,9 @@ import model.Limpiador;
 import model.Medico;
 import model.Operacion;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.atomic.DoubleAccumulator;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,12 +27,12 @@ public class Main {
             Operacion op1 = new Operacion();
             op1.setDescripcion("Operacion de corazon");
             op1.setMedico(medico);
-            op1.setFecha(new Date("2021-10-10"));
+            op1.setFecha(LocalDateTime.now());
 
             Operacion op2 = new Operacion();
             op2.setDescripcion("Operacion de pulmon");
             op2.setMedico(medico);
-            op2.setFecha(new Date("2022-10-10"));
+            op2.setFecha(LocalDateTime.now());
 
 
             List<Operacion> operacions = List.of(op1, op2);

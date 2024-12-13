@@ -1,12 +1,11 @@
 package model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "enfermero")
+@PrimaryKeyJoinColumn(name="id")
+@DiscriminatorValue(value="3")
 public class Enfermero extends Persona{
     @Column(name = "consulta", nullable = false)
     private String consulta;
