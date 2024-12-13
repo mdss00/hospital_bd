@@ -1,19 +1,17 @@
 package model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo_persona", discriminatorType = DiscriminatorType.INTEGER)
-@DiscriminatorValue(value = "0")
+@Table(name = "persona")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Persona {
 
     @Id
-    @Column(name = "id_persona", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_name")
+    @SequenceGenerator(name = "sequence_name", sequenceName = "your_sequence_name", allocationSize = 1)
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
     @Column(name = "dni", nullable = false, length = 9)
     protected String dni;
@@ -36,7 +34,6 @@ public class Persona {
     public Integer getId() {
         return id;
     }
-
 
     public String getDni() {
         return dni;

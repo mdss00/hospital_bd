@@ -4,9 +4,10 @@ package model;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue(value = "4")
+@Table(name = "limpiador")
 public class Limpiador extends Persona{
     @Column(name = "planta", nullable = false)
     private String planta;

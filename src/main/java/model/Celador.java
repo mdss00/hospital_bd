@@ -2,9 +2,10 @@ package model;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue(value = "3")
+@Table(name = "celador")
 public class Celador extends Persona{
 
     private String turno;

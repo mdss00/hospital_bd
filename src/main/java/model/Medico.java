@@ -6,7 +6,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "medico")
-@DiscriminatorValue(value = "1")
 public class Medico extends Persona{
 
     @Column(name = "consulta", nullable = false)
