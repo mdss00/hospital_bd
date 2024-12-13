@@ -1,6 +1,8 @@
 package model;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 @Table(name = "operacion")
@@ -15,7 +17,7 @@ public class Operacion{
     private String descripcion;
 
     @Column(name = "fecha", nullable = false)
-    private Date fecha;
+    private LocalDateTime fecha;
 
     @ManyToOne
     @JoinColumn(name = "id_persona")
@@ -33,11 +35,11 @@ public class Operacion{
         this.medico = medico;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
