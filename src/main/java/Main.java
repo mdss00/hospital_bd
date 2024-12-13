@@ -1,12 +1,9 @@
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import model.Limpiador;
-import model.Medico;
-import model.Operacion;
+import model.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -16,6 +13,8 @@ public class Main {
 
         try {
             em.getTransaction().begin();
+
+            // Crear y persistir un objeto Medico
             Medico medico = new Medico();
             medico.setDni("12345678A");
             medico.setNss("123456789012");
@@ -34,10 +33,12 @@ public class Main {
             op2.setMedico(medico);
             op2.setFecha(LocalDateTime.now());
 
-
             List<Operacion> operacions = List.of(op1, op2);
             medico.setHistorico(operacions);
 
+            em.persist(medico);
+
+            // Crear y persistir un objeto Limpiador
             Limpiador limpiador = new Limpiador();
             limpiador.setDni("87654321B");
             limpiador.setNss("987654321098");
@@ -47,11 +48,30 @@ public class Main {
             limpiador.setPlanta("B");
             limpiador.setTurno("Tarde");
 
-
-            em.persist(medico);
             em.persist(limpiador);
 
+            // Crear y persistir un objeto Enfermero
+            Planta planta = new Planta();
+            planta.setNum_planta(1);
+            em.persist(planta);
 
+            Enfermero enfermero = new Enfermero();
+            enfermero.setDni("11223344C");
+            enfermero.setNss("112233445566");
+            enfermero.setDireccion("Calle Verdadera 456");
+            enfermero.setTelefono("1122334455");
+            enfermero.setNombre("Ana");
+            enfermero.setTurno(Turnos.MANANA);
+            enfermero.setPlanta(planta);
+
+            Consulta consulta = new Consulta();
+            consulta.setFecha(LocalDateTime.now());
+          /*  consulta.setEnfermero(enfermero);*/
+
+            enfermero.setConsulta(consulta);
+
+            em.persist(enfermero);
+            em.persist(consulta);
 
             em.getTransaction().commit();
 

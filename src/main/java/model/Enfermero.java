@@ -7,27 +7,42 @@ import jakarta.persistence.*;
 @PrimaryKeyJoinColumn(name="id")
 @DiscriminatorValue(value="3")
 public class Enfermero extends Persona{
-    @Column(name = "consulta", nullable = false)
-    private String consulta;
+
     @Column(name = "turno", nullable = false)
-    private String turno;
+    private Turnos turno;
+
+    @ManyToOne
+    @JoinColumn(name = "id_planta", nullable = false)
+    private Planta planta;
+
+    @OneToOne(mappedBy = "enfermero")
+    private Consulta consulta;
 
     public Enfermero() {
     }
 
-    public String getConsulta() {
+
+    public Consulta getConsulta() {
         return consulta;
     }
 
-    public void setConsulta(String consulta) {
+    public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
     }
 
-    public String getTurno() {
+    public Turnos getTurno() {
         return turno;
     }
 
-    public void setTurno(String turno) {
+    public void setTurno(Turnos turno) {
         this.turno = turno;
+    }
+
+    public Planta getPlanta() {
+        return planta;
+    }
+
+    public void setPlanta(Planta planta) {
+        this.planta = planta;
     }
 }
