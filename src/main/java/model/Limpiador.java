@@ -8,26 +8,30 @@ import jakarta.persistence.*;
 @PrimaryKeyJoinColumn(name="id")
 @DiscriminatorValue(value="4")
 public class Limpiador extends Persona{
-    @Column(name = "planta", nullable = false)
-    private String planta;
+
+
+    @ManyToOne
+    @JoinColumn(name = "id_planta", nullable = false)
+    private Planta planta;
+
     @Column(name = "turno", nullable = false)
-    private String turno;
+    private Turnos turno;
     public Limpiador() {
     }
 
-    public String getPlanta() {
+    public Planta getPlanta() {
         return planta;
     }
 
-    public void setPlanta(String planta) {
+    public void setPlanta(Planta planta) {
         this.planta = planta;
     }
 
-    public String getTurno() {
+    public Turnos getTurno() {
         return turno;
     }
 
-    public void setTurno(String turno) {
+    public void setTurno(Turnos turno) {
         this.turno = turno;
     }
 }

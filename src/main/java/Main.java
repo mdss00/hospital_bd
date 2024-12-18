@@ -39,21 +39,26 @@ public class Main {
             em.persist(medico);
 
             // Crear y persistir un objeto Limpiador
+
+            Planta planta = new Planta();
+            planta.setNum_planta(2);
+            em.persist(planta);
+
             Limpiador limpiador = new Limpiador();
             limpiador.setDni("87654321B");
             limpiador.setNss("987654321098");
             limpiador.setDireccion("Calle Falsa 321");
             limpiador.setTelefono("987654321");
             limpiador.setNombre("Pedro");
-            limpiador.setPlanta("B");
-            limpiador.setTurno("Tarde");
+            limpiador.setPlanta(planta);
+            limpiador.setTurno(Turnos.TARDE);
 
             em.persist(limpiador);
 
             // Crear y persistir un objeto Enfermero
-            Planta planta = new Planta();
-            planta.setNum_planta(1);
-            em.persist(planta);
+            Planta planta2 = new Planta();
+            planta2.setNum_planta(1);
+            em.persist(planta2);
 
             Enfermero enfermero = new Enfermero();
             enfermero.setDni("11223344C");
@@ -62,7 +67,7 @@ public class Main {
             enfermero.setTelefono("1122334455");
             enfermero.setNombre("Ana");
             enfermero.setTurno(Turnos.MANANA);
-            enfermero.setPlanta(planta);
+            enfermero.setPlanta(planta2);
 
             Consulta consulta = new Consulta();
             consulta.setFecha(LocalDateTime.now());
